@@ -1,11 +1,17 @@
 import unittest
 
+import nltk
 from pybtex.database.input import bibtex
 
 from merge_bibtex import process_identical_keys, process_similar_keys, parse_bibtex_files
 
 
 class MergeBibtexTest(unittest.TestCase):
+
+    @classmethod
+    def setUpClass(cls) -> None:
+        super().setUpClass()
+        nltk.download('stopwords')
 
     def test_processing_identical_keys(self):
         # load bib data
